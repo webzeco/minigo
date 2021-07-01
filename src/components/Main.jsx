@@ -1,5 +1,6 @@
+import { useHistory } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import { Route, BrowserRouter as Router, Switch  } from "react-router-dom";
 import Footer from "./common/Footer";
 import Header from "./common/Header";
 import NotFound from "./common/NotFound";
@@ -14,10 +15,14 @@ import { productData } from "./data";
 import Login from "./Login";
 import Forgot from "./Forgot";
 import Account from "./Account";
+import { ProductDetailContext } from "./contexts/ProductDetailContext";
+import { retry } from "async";
 const Main = () => {
+  const history=useHistory();
   const [user,setUser]=useState();
   const [collection, setColl] = useState("");
   const [items, setItems] = useState([]);
+  const [product,setProduct]=useState();
 
   useEffect(() => {
     setItems(productData);
@@ -27,21 +32,27 @@ const Main = () => {
     setColl(coll);
   };
   const loginHandler=(user)=>{
-    console.log('hello');
-    console.log(user);
     setUser(user);
+    history.push('/');
   }
   const signUpHandler=(user)=>{
-    console.log(user);
     setUser(user);
+    history.push('/');
   }
   const forgotHandler=(user)=>{
     console.log('email sent!!!!');
+    history.push('/');
+  }
+
+  const productDetailHandler=(prod)=>{
+    setProduct(prod);
+    console.log(prod);
+    history.push('/showProductDetail');
   }
   return (
     <UserContext.Provider value= {{user:user}}>
+          <ProductDetailContext.Provider value= {{product,productDetailHandler}}>
     <CollectionContext.Provider value={{ coll: collection, setCollectionHandler }}>
-      <Router>
         <div>
           <Header />
           <hr />
@@ -61,7 +72,7 @@ const Main = () => {
             <Route
               path="/showProductDetail"
               render={(props) => (
-                <ShowProductDetail product={productData[0]} {...props} />
+                <ShowProductDetail product={product} {...props} />
               )}
             />
              <Route
@@ -88,15 +99,12 @@ const Main = () => {
                 <Account onForgot={forgotHandler} {...props} />
               )}
             />
-            
-
             <Route  component={NotFound} />
           </Switch>
           <Footer />
-
         </div>
-      </Router>
     </CollectionContext.Provider>
+</ProductDetailContext.Provider>
     </UserContext.Provider>
   );
 };

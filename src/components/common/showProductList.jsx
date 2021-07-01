@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, {  useState } from "react";
+
 import ProductCard from "./ProductCard";
 
 const ProductList = ({ pageDataList }) => {
@@ -24,6 +24,7 @@ const ProductList = ({ pageDataList }) => {
 
             return (
               <ProductCard
+                product={product}
                 key={index}
                 images={images}
                 title={title}
