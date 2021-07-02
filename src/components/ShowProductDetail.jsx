@@ -61,7 +61,7 @@ export default class ShowProductDetail extends Component {
             <div className="col-md-6 w-40">
               
            {/* caroausel start */}
-           <div id="carouselExampleControlsNoTouching" class="carousel slide banner" data-bs-touch="false" data-bs-interval="false">
+           {/* <div id="carouselExampleControlsNoTouching" class="carousel slide banner" data-bs-touch="false" data-bs-interval="false">
   <div class="carousel-inner" style={{width:'60%',placeItems:'center',alignItems:'center',marginLeft:'20%'}}>
     <div class="carousel-item active">
       <img src="https://www.freeiconspng.com/uploads/women-bag-png-32.png" class="d-block w-80" alt="https://www.freeiconspng.com/uploads/women-bag-png-32.png"/>
@@ -82,7 +82,7 @@ export default class ShowProductDetail extends Component {
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-           
+            */}
            {/* caroausel end */}
            </div>
             <div className="col-md-6 back px-5">
@@ -496,7 +496,7 @@ class AddReview extends Component {
         <div class="container font_fam">
           <div class="ho pt-2 mb-3 w-100">
             {/* caroausel start */}
-          <TryCarauosel/>
+          <TryCarauosel getRelatedProducts/>
            {/* caroausel end */}
            
           </div>

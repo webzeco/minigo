@@ -1,20 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ProductDetailContext } from '../contexts/ProductDetailContext';
 import './style/carauosel.css';
 
-export default function TryCarauosel() {
+export default function TryCarauosel({getRelatedProducts}) {
+    const { relatedProd } = useContext(ProductDetailContext);
+
     let items = document.querySelectorAll('.carousel-item')
-items.forEach((el) => {
-    const minPerSlide = 4
-    let next = el.nextElementSibling
-    for (var i=1; i<minPerSlide; i++) {
-        if (!next) {
-        	next = items[0]
-      	};
-        let cloneChild = next.cloneNode(true)
-        el.appendChild(cloneChild.children[0])
-        next = next.nextElementSibling
-    }
-});
+    items.forEach((el) => {
+        const minPerSlide = 4
+        let next = el.nextElementSibling
+        for (var i = 1; i < minPerSlide; i++) {
+            if (!next) {
+                next = items[0]
+            };
+            let cloneChild = next.cloneNode(true)
+            el.appendChild(cloneChild.children[0])
+            next = next.nextElementSibling
+        }
+    });
 
     return (
         <div>
@@ -23,6 +26,10 @@ items.forEach((el) => {
                 <div class="row mx-auto my-auto justify-content-center">
                     <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner" role="listbox">
+                            {/* {relatedProd?.relatedProd.map(prod=>{
+                                return (
+                                )
+                            })} */}
                             <div class="carousel-item active">
                                 <div class="col-md-3">
                                     <div class="card">
@@ -33,47 +40,7 @@ items.forEach((el) => {
                                     </div>
                                 </div>
                             </div>
-                            <div class="carousel-item">
-                                <div class="col-md-3">
-                                    <div class="card">
-                                        <div class="card-img">
-                                            <img src="//via.placeholder.com/500x400/e66?text=2" class="img-fluid" />
-                                        </div>
-                                        <div class="card-img-overlay">Slide 2</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="col-md-3">
-                                    <div class="card">
-                                        <div class="card-img">
-                                            <img src="//via.placeholder.com/500x400/7d2?text=3" class="img-fluid" />
-                                        </div>
-                                        <div class="card-img-overlay">Slide 3</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="col-md-3">
-                                    <div class="card">
-                                        <div class="card-img">
-                                            <img src="//via.placeholder.com/500x400?text=4" class="img-fluid" />
-                                        </div>
-                                        <div class="card-img-overlay">Slide 4</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="col-md-3">
-                                    <div class="card">
-                                        <div class="card-img">
-                                            <img src="//via.placeholder.com/500x400/aba?text=5" class="img-fluid" />
-                                        </div>
-                                        <div class="card-img-overlay">Slide 5</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
+                            <div class="carousel-item ">
                                 <div class="col-md-3">
                                     <div class="card">
                                         <div class="card-img">
@@ -93,7 +60,7 @@ items.forEach((el) => {
                     </div>
                 </div>
                 <h5 class="mt-2 fw-light">advances one slide at a time</h5>
-            </div>       
             </div>
+        </div>
     )
 }

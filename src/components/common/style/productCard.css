@@ -1,7 +1,21 @@
 .round-button {
-    display:block;
-    width:17px;
-    height:17px;
-    border: 0px solid white;
-    border-radius: 50%;
+  display: block;
+  width: 17px;
+  height: 17px;
+  border: 0px solid white;
+  border-radius: 50%;
+}
+.hid_border {
+  border: hidden !important;
+}
+.card-title {
+  font-size: 15px !important;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.img_back_col {
+  background-color: #f5f3f2 !important;
+}
+.card-text {
+  font-size: 15px !important;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
